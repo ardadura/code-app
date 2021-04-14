@@ -1,0 +1,26 @@
+main {
+  width: 100%;
+  height: calc(100% - 6rem);
+  overflow-y: auto;
+
+  .item {
+    display: flex;
+    margin: .5rem 20vw .5rem .35rem;
+    max-width: 95vw;
+
+    &.mine {
+      margin: .5rem .25rem  .5rem 20vw;
+      justify-content: flex-end;
+
+      & > div {
+        background-color: chartreuse;
+      }
+    }
+
+    & > div {
+      border-radius: .5rem;
+      background-color: #e8e8e8;
+      padding: .5rem;
+    }
+  }
+}
