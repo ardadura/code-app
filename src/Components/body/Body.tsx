@@ -1,4 +1,4 @@
-import "./Body.scss"
+import "./Body.scss";
 import {useSelector} from "react-redux";
 import {IStore} from "../../Store/store";
 import {messages} from "../../Store/Slices/Messages";

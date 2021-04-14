@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import type {IStore} from '../store'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import type {IStore} from '../store';
 
 // Define a type for the slice state
 interface IMessagesState {

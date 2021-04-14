@@ -1,4 +1,4 @@
-import "./Footer.scss"
+import "./Footer.scss";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
 
