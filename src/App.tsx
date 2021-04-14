@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect} from 'react'
 import './App.scss'
 import Header from "./Components/header/Header"
 import Footer from "./Components/footer/Footer"
@@ -8,11 +8,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {IDispatch, IStore} from "./Store/store";
 import {messages, setStoreMessages} from "./Store/Slices/Messages";
 
+
 const App = () => {
     const dispatch = useDispatch<IDispatch>()
     const _messages: any = useSelector<IStore>(messages)
-    const [socketUrl, setSocketUrl] = useState('wss://echo.websocket.org')
-    const messageHistory = useRef([])
+    const socketUrl: any = process.env.REACT_APP_WEBSOCKET_URL
 
     const {
         sendMessage,
@@ -20,7 +20,6 @@ const App = () => {
         readyState,
     } = useWebSocket(socketUrl)
 
-    //messageHistory.current = useMemo(() => messageHistory.current.concat(lastMessage), [lastMessage])
     const handleClickSendMessage = (message: string) => {
         sendMessage(message)
         let arr = [..._messages.conversation]
@@ -37,15 +36,14 @@ const App = () => {
     }[readyState]
 
     useEffect(() => {
-        console.log("last:", lastMessage?.data)
         let arr = [..._messages.conversation]
         lastMessage?.data.length > 0 && arr.push({text: lastMessage?.data, isMine: false})
         dispatch(setStoreMessages({conversation: arr}))
     }, [lastMessage?.data])
 
     useEffect(() => {
-        console.log(connectionStatus)
-    },)
+        console.log(connectionStatus)// check connection status
+    })
 
     return (
         <div className="App">
